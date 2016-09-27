@@ -16,7 +16,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 	libboost-dev \
 	libjudy-dev \
 	libboost-program-options-dev \
-	unzip \
 	g++-multilib \
     && rm -rf /var/lib/apt/lists/*
 
@@ -27,9 +26,7 @@ ENV LANG=en_US.UTF-8 \
 	CXX=g++ \
 	HOME=/root \
 	BASE_DIR=/root/projects \
-	PROBE_URL=https://github.com/aig-upf/probe/archive/master.tar.gz \
 	LAPKT_URL=https://github.com/LAPKT-dev/LAPKT-public/archive/master.tar.gz \
-	PLANNING_DOMAINS_URL=https://bitbucket.org/planning-researchers/classical-domains/get/master.tar.gz \
 	PATH=$PATH:/root/projects/lapkt/compiled_planners
 
 
