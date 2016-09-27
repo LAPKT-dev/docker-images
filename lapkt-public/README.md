@@ -1,6 +1,6 @@
 # LAPKT
 
-[![](https://images.microbadger.com/badges/image/lapkt/lapkt-public.svg)](https://microbadger.com/images/lapkt/lapkt-public "")
+[![](https://images.microbadger.com/badges/image/lapkt/lapkt-public.svg)](https://microbadger.com/images/lapkt/lapkt-public "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/lapkt/lapkt-public.svg)](https://microbadger.com/images/lapkt/lapkt-public "Get your own version badge on microbadger.com")
 
 This directory contains the Docker definition for an image 
 with a number of LAPKT-Based planners
@@ -20,21 +20,22 @@ Additionally, The image pre-compiles the following planners, which are ready to 
 * siw-then-bfsf
 * ff
 
-Each of the previous tools lies on the subdirectory `/root/projects/lapkt/compiled_planners`.
+Each of the previous tools lies on the subdirectory `/root/projects/lapkt/compiled_planners`
 
 
 ## Basic Usage
 In order to use the docker images, you need to [have Docker installed on your machine](https://docs.docker.com/engine/installation).
-Once that is done, you can pull the image with
+
+Once that is done, you can pull the image with (you may need sudo rights)
 
 ```shell
-docker pull lapkt/public
+docker pull lapkt/lapkt-public
 ```
 
 Then start the container interactively:
 
 ```shell
-docker run -it lapkt/public
+docker run -it lapkt/lapkt-public
 ```
 
 and use any of the provided tools, e.g.
@@ -48,14 +49,14 @@ and use any of the provided tools, e.g.
 We can run the compiled planners from the host machine:
 
 ```shell
-docker run -it nirlipo/lapkt \
+docker run -it lapkt/lapkt-public \
 ./siw --domain ../benchmarks/ipc-2011/visitall/domain.pddl --problem ../benchmarks/ipc-2011/visitall/problem12.pddl > output.txt
 ```
 
 Alternatively, we can use the same technique in order to have some planner output its results to a directory from the host machine:
 
 ```shell
-docker run -it nirlipo/lapkt \
+docker run -it lapkt/lapkt-public \
 ./siw --domain ../benchmarks/ipc-2011/visitall/domain.pddl --problem ../benchmarks/ipc-2011/visitall/problem12.pddl > output.txt
 ```
 
@@ -63,13 +64,13 @@ Assume we have, say, some benchmarks on a `~/benchmarks` directory on the host m
 We can start the docker container [mounting the desired directory](https://docs.docker.com/engine/tutorials/dockervolumes/#mount-a-host-directory-as-a-data-volume) as follows:
 
 ```shell
-docker run -it -v ~/benchmarks:/root/projects/benchmarks nirlipo/lapkt
+docker run -it -v ~/benchmarks:/root/projects/benchmarks lapkt/lapkt-public
 ```
 
 and the desired benchmarks will be accessible under `/root/projects/benchmarks`.
 
 
 
-## Extending the image
-_Work in Progress_
+## Acknowledgements
+Script based on aig-upf/starter-kit docker repository
 
